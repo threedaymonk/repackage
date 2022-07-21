@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Calibre
+GenericName=Ebook Library
+Icon=calibre
+Exec=/opt/calibre/calibre
+Terminal=false

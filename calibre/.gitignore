@@ -1,0 +1,5 @@
+build/DEBIAN
+build/opt
+build/usr/share/icons
+*.deb
+linux-installer.sh
