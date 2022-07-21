@@ -5,9 +5,14 @@ os="linux64"
 lang="en-GB"
 url="https://download.mozilla.org/?product=firefox-latest-ssl&os=${os}&lang=${lang}"
 desktop_url="https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/components/shell/search-provider-files/firefox.desktop"
-
 version="$(curl -sD - "${url}" | grep Location \
   | grep -Eo "releases/[0-9\\.]+" | cut -d'/' -f2)"
+deb="firefox-${version}.deb"
+
+if [ -f "${deb}" ]; then
+  echo "Version ${version} has already been packaged"
+  exit 0
+fi
 
 echo "Configuring version $version"
 
@@ -42,4 +47,4 @@ mkdir -p "build/usr/share/applications"
 curl -sLo "build/usr/share/applications/firefox.desktop" "${desktop_url}"
 
 echo "Building Firefox package for version $version"
-dpkg-deb --root-owner-group --build "build" "firefox-${version}.deb"
+dpkg-deb --root-owner-group --build "build" "${deb}"
