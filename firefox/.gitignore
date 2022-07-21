@@ -1,0 +1,4 @@
+build/DEBIAN
+build/opt
+build/usr/share
+*.deb
