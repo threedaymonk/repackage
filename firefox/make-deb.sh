@@ -1,13 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
+package="firefox-mozilla-central"
 os="linux64"
 lang="en-GB"
 url="https://download.mozilla.org/?product=firefox-latest-ssl&os=${os}&lang=${lang}"
 desktop_url="https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/components/shell/search-provider-files/firefox.desktop"
 version="$(curl -sD - "${url}" | grep Location \
   | grep -Eo "releases/[0-9\\.]+" | cut -d'/' -f2)"
-deb="firefox-${version}.deb"
+deb="${package}-${version}.deb"
 
 if [ -f "${deb}" ]; then
   echo "Version ${version} has already been packaged"
@@ -19,13 +20,14 @@ echo "Configuring version $version"
 mkdir -p "build/DEBIAN" "build/opt"
 
 cat <<EOF > build/DEBIAN/control
-Package: firefox
+Package: ${package}
 Version: ${version}
 Section: web
 Priority: optional
 Architecture: amd64
 Maintainer: Paul Battley <pbattley@gmail.com>
 Description: Firefox Web Browser (from Mozilla tarball)
+Provides: gnome-www-browser, iceweasel, www-browser, firefox
 EOF
 
 echo "Fetching and expanding distribution tarball"
