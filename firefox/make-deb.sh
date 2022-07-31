@@ -28,6 +28,7 @@ Architecture: amd64
 Maintainer: Paul Battley <pbattley@gmail.com>
 Description: Firefox Web Browser (from Mozilla tarball)
 Provides: gnome-www-browser, iceweasel, www-browser, firefox
+Conflicts: firefox
 EOF
 
 echo "Fetching and expanding distribution tarball"
