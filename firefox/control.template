@@ -1,0 +1,9 @@
+Package: ${package}
+Version: ${version}
+Section: web
+Priority: optional
+Architecture: amd64
+Maintainer: Paul Battley <pbattley@gmail.com>
+Description: Firefox Web Browser (from Mozilla tarball)
+Provides: gnome-www-browser, iceweasel, www-browser, firefox
+Conflicts: firefox
