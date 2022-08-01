@@ -1,4 +1,2 @@
-build/DEBIAN
-build/opt
-build/usr/share
+tmp
 *.deb
