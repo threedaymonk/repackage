@@ -1,0 +1,7 @@
+Package: ${package}
+Version: ${version}
+Section: books
+Priority: optional
+Architecture: amd64
+Maintainer: Paul Battley <pbattley@gmail.com>
+Description: Calibre is a free and open-source e-book reader.

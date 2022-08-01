@@ -1,5 +1,2 @@
-build/DEBIAN
-build/opt
-build/usr/share/icons
+tmp
 *.deb
-linux-installer.sh
