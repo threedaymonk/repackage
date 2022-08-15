@@ -1,0 +1,8 @@
+Package: ${package}
+Version: ${version}
+Section: universe/sound
+Priority: optional
+Architecture: all
+Depends: default-jre
+Maintainer: Paul Battley <pbattley@gmail.com>
+Description: Edisyn Synthesizer Patch Editor
