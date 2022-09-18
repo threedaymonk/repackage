@@ -29,4 +29,5 @@ $(package)-$(version).deb: \
 	$(build_dir)/usr/share/java/edisyn/edisyn.jar \
 	$(build_dir)/DEBIAN/control \
 	$(wildcard root/**/*)
+	cp -R root/* $(build_dir)
 	dpkg-deb --root-owner-group --build $(build_dir) $@
