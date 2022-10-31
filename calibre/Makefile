@@ -5,7 +5,7 @@ build_dir = tmp/build-$(version)
 
 .PHONY: deb installer clean
 
-deb: $(package)-$(version).deb
+deb: ../debs/$(package)-$(version).deb
 
 installer: tmp/linux-installer-$(version).sh
 
@@ -29,7 +29,7 @@ $(build_dir)/DEBIAN/control: control.template
 	mkdir -p $$(dirname "$@")
 	package="$(package)" version="$(version)" envsubst < $< > $@
 
-$(package)-$(version).deb: \
+../debs/$(package)-$(version).deb: \
 	$(build_dir)/opt/calibre \
 	$(build_dir)/DEBIAN/control \
 	$(build_dir)/usr/share/icons/hicolor/256x256/apps/calibre.png \

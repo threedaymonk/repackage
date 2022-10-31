@@ -6,7 +6,7 @@ build_dir = tmp/build-$(version)
 
 .PHONY: deb appimage clean
 
-deb: $(package)-$(version).deb
+deb: ../debs/$(package)-$(version).deb
 
 appimage: $(build_dir)/opt/cura/Ultimaker-Cura.Appimage
 
@@ -34,7 +34,7 @@ $(build_dir)/DEBIAN/control: control.template
 	mkdir -p $$(dirname "$@")
 	package="$(package)" version="$(version)" envsubst < $< > $@
 
-$(package)-$(version).deb: \
+../debs/$(package)-$(version).deb: \
 	$(build_dir)/opt/cura/Ultimaker-Cura.Appimage \
 	$(build_dir)/DEBIAN/control \
 	$(build_dir)/usr/share/icons/hicolor/256x256/apps/cura-icon.png \

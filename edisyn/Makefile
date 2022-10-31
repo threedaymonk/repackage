@@ -6,7 +6,7 @@ build_dir = tmp/build-$(version)
 
 .PHONY: deb jar clean
 
-deb: $(package)-$(version).deb
+deb: ../debs/$(package)-$(version).deb
 
 jar: tmp/edisyn-$(version).jar
 
@@ -25,7 +25,7 @@ $(build_dir)/usr/share/java/edisyn/edisyn.jar: tmp/edisyn-$(version).jar
 	mkdir -p $$(dirname "$@")
 	cp $< $@
 
-$(package)-$(version).deb: \
+../debs/$(package)-$(version).deb: \
 	$(build_dir)/usr/share/java/edisyn/edisyn.jar \
 	$(build_dir)/DEBIAN/control \
 	$(wildcard root/**/*)
