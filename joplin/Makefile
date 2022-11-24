@@ -1,6 +1,6 @@
 package = joplin
-version = $(shell curl -s -H 'Accept: application/vnd.github+json' https://api.github.com/repos/laurent22/joplin/releases \
-  	  | jq -r 'first(.[] | select(.prerelease != true) | .tag_name)' | sed 's/v//')
+version = $(shell curl -sI 'https://github.com/laurent22/joplin/releases/latest' \
+	  | grep -i '^location:' | grep -Eo '[^/v]+$$')
 appimage_url = https://github.com/laurent22/joplin/releases/download/v$(version)/Joplin-$(version).AppImage
 build_dir = tmp/build-$(version)
 
