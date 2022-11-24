@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Joplin
+Comment=Joplin for Desktop
+Exec=/opt/joplin/Joplin.AppImage  %u
+Icon=joplin
+StartupWMClass=Joplin
+Type=Application
+Categories=Office;
+MimeType=x-scheme-handler/joplin;
+X-GNOME-SingleWindow=true
+SingleMainWindow=true

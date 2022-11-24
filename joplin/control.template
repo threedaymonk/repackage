@@ -1,0 +1,7 @@
+Package: ${package}
+Version: ${version}
+Section: graphics
+Priority: optional
+Architecture: amd64
+Maintainer: Paul Battley <pbattley@gmail.com>
+Description: Note taking and to-do application
