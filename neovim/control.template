@@ -1,0 +1,8 @@
+Package: ${package}
+Version: ${version}
+Section: editors
+Priority: optional
+Architecture: amd64
+Maintainer: Paul Battley <pbattley@gmail.com>
+Description: Text editor
+Provides: editor
