@@ -1,11 +1,9 @@
 MAKEFLAGS += -j4
 
-.PHONY: all
+.PHONY: all calibre cura edisyn firefox joplin neovim
 
-all: calibre cura edisyn firefox joplin neovim
+all : calibre cura edisyn firefox joplin neovim
 
-debs:
+calibre cura edisyn firefox joplin neovim :
 	mkdir -p debs
-
-%: debs
 	$(MAKE) -C $@
