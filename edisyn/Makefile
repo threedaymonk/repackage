@@ -6,7 +6,7 @@ build_dir = tmp/build-$(version)
 
 .PHONY: deb jar clean
 
-deb: ../debs/$(package)-$(version).deb
+deb: ../debs/$(package)-$(version).deb ../debs/$(package)-latest.deb
 
 jar: tmp/edisyn-$(version).jar
 
@@ -24,6 +24,9 @@ $(build_dir)/DEBIAN/control: control.template
 $(build_dir)/usr/share/java/edisyn/edisyn.jar: tmp/edisyn-$(version).jar
 	mkdir -p $$(dirname "$@")
 	cp $< $@
+
+../debs/$(package)-latest.deb: ../debs/$(package)-$(version).deb
+	ln -sf "$$(readlink -f "$<")" "$@"
 
 ../debs/$(package)-$(version).deb: \
 	$(build_dir)/usr/share/java/edisyn/edisyn.jar \

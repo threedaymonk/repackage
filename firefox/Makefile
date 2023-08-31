@@ -9,7 +9,7 @@ build_dir = tmp/build-$(version)
 
 .PHONY: deb tarball clean
 
-deb: ../debs/$(package)-$(version).deb
+deb: ../debs/$(package)-$(version).deb ../debs/$(package)-latest.deb
 
 tarball: tmp/firefox-$(version).tar.bz2
 
@@ -31,6 +31,9 @@ $(build_dir)/DEBIAN/control: control.template
 $(build_dir)/opt/firefox: tmp/firefox-$(version).tar.bz2
 	mkdir -p $(build_dir)/opt
 	tar -C $(build_dir)/opt -jxvf tmp/firefox-$(version).tar.bz2
+
+../debs/$(package)-latest.deb: ../debs/$(package)-$(version).deb
+	ln -sf "$$(readlink -f "$<")" "$@"
 
 ../debs/$(package)-$(version).deb: \
 	$(build_dir)/opt/firefox \

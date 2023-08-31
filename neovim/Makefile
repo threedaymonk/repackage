@@ -6,7 +6,7 @@ build_dir = tmp/build-$(version)
 
 .PHONY: deb clean
 
-deb: ../debs/$(package)-$(version).deb
+deb: ../debs/$(package)-$(version).deb ../debs/$(package)-latest.deb
 
 clean:
 	rm -rf "$(build_dir)"
@@ -19,6 +19,9 @@ $(build_dir)/opt/neovim/neovim.appimage:
 $(build_dir)/DEBIAN/control: control.template
 	mkdir -p $$(dirname "$@")
 	package="$(package)" version="$(version)" envsubst < $< > $@
+
+../debs/$(package)-latest.deb: ../debs/$(package)-$(version).deb
+	ln -sf "$$(readlink -f "$<")" "$@"
 
 ../debs/$(package)-$(version).deb: \
 	$(build_dir)/opt/neovim/neovim.appimage \
