@@ -1,7 +1,7 @@
 package = cura
 version = $(shell curl -sI 'https://github.com/Ultimaker/Cura/releases/latest' \
 	  | grep -i '^location:' | grep -Eo '[^/v]+$$')
-appimage_url = https://github.com/Ultimaker/Cura/releases/download/$(version)/UltiMaker-Cura-$(version)-linux.AppImage
+appimage_url = https://github.com/Ultimaker/Cura/releases/download/$(version)/UltiMaker-Cura-$(version)-linux-X64.AppImage
 build_dir = tmp/build-$(version)
 
 .PHONY: deb appimage clean
@@ -24,10 +24,10 @@ $(build_dir)/usr/share/icons/hicolor/256x256/apps/cura-icon.png: \
 	7z x -aoa -o"$$(dirname "$@")" "$<" "cura-icon.png"
 	touch "$@"
 
-$(build_dir)/usr/share/applications/cura.desktop: \
+$(build_dir)/usr/share/applications/com.ultimaker.cura.desktop: \
 	$(build_dir)/opt/cura/UltiMaker-Cura.AppImage
 	mkdir -p $$(dirname "$@")
-	7z x -aoa -o"$$(dirname "$@")" "$<" "cura.desktop"
+	7z x -aoa -o"$$(dirname "$@")" "$<" "com.ultimaker.cura.desktop"
 	touch "$@"
 
 $(build_dir)/DEBIAN/control: control.template
@@ -41,7 +41,7 @@ $(build_dir)/DEBIAN/control: control.template
 	$(build_dir)/opt/cura/UltiMaker-Cura.AppImage \
 	$(build_dir)/DEBIAN/control \
 	$(build_dir)/usr/share/icons/hicolor/256x256/apps/cura-icon.png \
-	$(build_dir)/usr/share/applications/cura.desktop \
+	$(build_dir)/usr/share/applications/com.ultimaker.cura.desktop \
 	$(wildcard root/**/*)
 	cp -R root/* $(build_dir)
 	dpkg-deb --root-owner-group --build $(build_dir) $@
