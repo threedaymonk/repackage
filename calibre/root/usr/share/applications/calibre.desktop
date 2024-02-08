@@ -3,5 +3,5 @@ Type=Application
 Name=Calibre
 GenericName=Ebook Library
 Icon=calibre
-Exec=/opt/calibre/calibre
+Exec=sh -c "QT_QPA_PLATFORM=xcb /opt/calibre/calibre"
 Terminal=false
