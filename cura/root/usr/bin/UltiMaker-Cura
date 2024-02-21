@@ -1,1 +1,2 @@
-/opt/cura/UltiMaker-Cura.AppImage
+#!/bin/sh
+QT_QPA_PLATFORM=xcb /opt/cura/UltiMaker-Cura.AppImage
