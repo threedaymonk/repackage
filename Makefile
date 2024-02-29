@@ -9,4 +9,4 @@ calibre cura edisyn firefox joplin neovim :
 	$(MAKE) -C $@
 
 prune :
-	./prune.sh
+	ruby prune.rb
