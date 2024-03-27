@@ -1,0 +1,8 @@
+Package: ${package}
+Version: ${version}
+Section: graphics
+Priority: optional
+Architecture: amd64
+Maintainer: Paul Battley <pbattley@gmail.com>
+Description: 3D printing software
+Depends: libwebkit2gtk-4.0-37
